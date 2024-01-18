@@ -257,7 +257,7 @@
       node.className = 'name'
       const song = defaultSongs.find(s => s.title === item)
       if (song && song.bvid) {
-        node.href = `https://b23.tv/${song.bvid}`
+        node.href = `https://www.bilibili.com/video/${song.bvid}`
         node.target = '_blank'
       }
       let textNode = document.createTextNode(item)
