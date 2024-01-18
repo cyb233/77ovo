@@ -181,7 +181,6 @@
     xhr.send()
     if (xhr.status === 200) {
       defaultSongs = JSON.parse(xhr.responseText)
-      defaultSongs = unique(defaultSongs)
     } else {
       defaultSongs = ['获取默认歌单失败']
     }
@@ -193,8 +192,8 @@
   function getInputSongs() {
     let inputSongs = JSON.parse(localStorage.getItem('inputSongs'))
     if (!inputSongs) {
-      inputSongs = defaultSongs
-      localStorage.setItem('inputSongs', JSON.stringify(inputSongs))
+      inputSongs = defaultSongs.map(item => item.title)
+      localStorage.setItem('inputSongs', JSON.stringify(unique(inputSongs)))
     }
     return inputSongs
   }
@@ -222,7 +221,7 @@
   function confirm() {
     let value = document.getElementById('names').value
     if (!value || !value.trim()) {
-      localStorage.setItem('inputSongs', JSON.stringify(defaultSongs))
+      localStorage.setItem('inputSongs', JSON.stringify(unique(defaultSongs.map(item => item.title))))
     } else {
       let inputSongs = value.split('\n')
       localStorage.setItem('inputSongs', JSON.stringify(unique(inputSongs)))
@@ -250,8 +249,13 @@
       nameDom.removeChild(nameDom.childNodes[0])
     }
     inputSongs.forEach(item => {
-      let node = document.createElement('span')
+      let node = document.createElement('a')
       node.className = 'name'
+      const song = defaultSongs.find(s => s.title === item)
+      if (song && song.bvid) {
+        node.href = `https://b23.tv/{song.bvid}`
+        node.target = '_blank'
+      }
       let textNode = document.createTextNode(item)
       node.appendChild(textNode)
       nameDom.appendChild(node)
