@@ -162,6 +162,10 @@
     line-height: 280px;
     overflow-x: scroll;
   }
+
+  a {
+    TEXT-DECORATION:none
+  }
 </style>
 <script>
   let defaultSongs = JSON.parse(localStorage.getItem('defaultSongs')) // 默认歌单
@@ -253,7 +257,7 @@
       node.className = 'name'
       const song = defaultSongs.find(s => s.title === item)
       if (song && song.bvid) {
-        node.href = `https://b23.tv/{song.bvid}`
+        node.href = `https://b23.tv/${song.bvid}`
         node.target = '_blank'
       }
       let textNode = document.createTextNode(item)
