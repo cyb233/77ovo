@@ -241,6 +241,8 @@
   // 生成名单数据
   function createNameElement() {
     const inputSongs = getInputSongs()
+    let countDom = document.getElementById('count')
+    countDom.innerText = inputSongs ? inputSongs.length : 0
     if (!inputSongs) return
     let nameDom = document.getElementById('name-container')
     let len = nameDom.childNodes.length
@@ -305,6 +307,7 @@
     <div class="btn-container">
       <button class="btn" type="button" onclick="start()">祁七七今天唱什么</button>
       <button class="btn btn-second" type="button" onclick="toggleDialog('input', true)">点我修改歌单</button>
+      <div>共计 <span id="count">0</span> 首</div>
     </div>
     <div class="name-container" id="name-container"></div>
   </div>
