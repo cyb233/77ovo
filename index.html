@@ -175,12 +175,13 @@
   }
 
   // 初始化默认歌单和自定义歌单
-  async function init() {
+  function init() {
     let xhr = new XMLHttpRequest()
     xhr.open('GET', 'songs.json', false)
     xhr.send()
     if (xhr.status === 200) {
       defaultSongs = JSON.parse(xhr.responseText)
+      defaultSongs = unique(defaultSongs)
     } else {
       defaultSongs = ['获取默认歌单失败']
     }
@@ -223,7 +224,8 @@
     if (!value || !value.trim()) {
       localStorage.setItem('inputSongs', JSON.stringify(defaultSongs))
     } else {
-      localStorage.setItem('inputSongs', JSON.stringify(value.split('\n')))
+      let inputSongs = value.split('\n')
+      localStorage.setItem('inputSongs', JSON.stringify(unique(inputSongs)))
     }
     createNameElement()
     toggleDialog('input', false)
@@ -240,13 +242,12 @@
   function createNameElement() {
     const inputSongs = getInputSongs()
     if (!inputSongs) return
-    let nameList = inputSongs.filter(item => item.trim())
     let nameDom = document.getElementById('name-container')
     let len = nameDom.childNodes.length
     for (let i = 0; i < len; i++) {
       nameDom.removeChild(nameDom.childNodes[0])
     }
-    nameList.forEach(item => {
+    inputSongs.forEach(item => {
       let node = document.createElement('span')
       node.className = 'name'
       let textNode = document.createTextNode(item)
@@ -259,8 +260,7 @@
   function start() {
     if (interval) return
     const inputSongs = getInputSongs()
-    let nameList = inputSongs.filter(item => item.trim())
-    let len = nameList.length
+    let len = inputSongs.length
     let times = 1
     const parent = document.getElementById('name-container')
     const resultDom = document.getElementById('result-text')
@@ -268,7 +268,7 @@
       if (times++ > maxTimes) {
         clearInterval(interval)
         interval = null
-        resultDom.innerText = nameList[current]
+        resultDom.innerText = inputSongs[current]
         toggleDialog('result', true)
         return
       }
@@ -291,6 +291,12 @@
   function copy() {
     const resultDom = document.getElementById('result-text')
     navigator.clipboard.writeText(resultDom.innerText)
+  }
+
+  // 简单去重
+  function unique(arr) {
+    arr = arr.filter(item => item.trim())
+    return [...new Set(arr)]
   }
 </script>
 
