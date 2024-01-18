@@ -11,5 +11,5 @@ xhr.open('GET', `https://api.bilibili.com/x/web-interface/view?bvid=${bvid}`, fa
 xhr.send()
 let pages = JSON.parse(xhr.responseText).data.pages
 // pages.shift()
-pages.map(a=>{return {title:a.part.match('《(.*?)》')[1],bvid:'BV1ou4y1e7s7',page:a.page}})
+pages.map(a=>{return {title:a.part.match('《(.*?)》')[1],bvid:bvid,page:a.page}})
 ```
