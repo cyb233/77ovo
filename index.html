@@ -279,7 +279,25 @@
       if (times++ > maxTimes) {
         clearInterval(interval)
         interval = null
-        resultDom.innerText = inputSongs[current]
+        const name = inputSongs[current]
+        resultDom.innerText = name
+        const songs = defaultSongs.filter(s => s.title === name)
+        const listenDom = document.getElementById('listen-container')
+        const len = listenDom.childNodes.length
+        for (let i = 0; i < len; i++) {
+          listenDom.removeChild(nameDom.childNodes[0])
+        }
+        songs.forEach(song => {
+          if (song.bvid) {
+            let node = document.createElement('a')
+            node.className = 'name'
+            node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
+            node.target = '_blank'
+            let textNode = document.createTextNode(`${song.bvid}${song.page ? ' P' + song.page : ''}`)
+            node.appendChild(textNode)
+            listenDom.appendChild(node)
+          }
+        }
         toggleDialog('result', true)
         return
       }
@@ -341,6 +359,7 @@
         <button class="btn" type="button" onclick="copy()">复制歌名</button>
         <button class="btn btn-second" type="button" onclick="toggleDialog('result', false)">关闭</button>
       </div>
+      <div id="listen-container" class="name-container"></div>
     </div>
   </div>
 </body>
