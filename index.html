@@ -124,8 +124,8 @@
   }
 
   .dialog-show {
-    width: 500px;
-    height: 400px;
+    width: 1000px;
+    height: 800px;
     transition: all 0.2s;
   }
 
@@ -285,7 +285,7 @@
         const listenDom = document.getElementById('listen-container')
         const len = listenDom.childNodes.length
         for (let i = 0; i < len; i++) {
-          listenDom.removeChild(nameDom.childNodes[0])
+          listenDom.removeChild(listenDom.childNodes[0])
         }
         songs.forEach(song => {
           if (song.bvid) {
