@@ -179,11 +179,8 @@
     createNameElement()
     const resultContainer = document.querySelector('#result-text');
     resultContainer.addEventListener('wheel', function(event) {
-      if (event.deltaY > 0) {
-        resultContainer.scrollLeft += 4; // 向右滚动
-      } else {
-        resultContainer.scrollLeft -= 4; // 向左滚动
-      }
+      event.preventDefault()
+      resultContainer.scrollLeft += event.deltaY
     });
   }
 
