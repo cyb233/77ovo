@@ -7,369 +7,369 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <title>祁七七今天唱什么</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>祁七七今天唱什么</title>
 </head>
 <style>
-  * {
-    padding: 0;
-    margin: 0;
-  }
+    * {
+        padding: 0;
+        margin: 0;
+    }
 
-  .root {
-    width: 100%;
-  }
+    .root {
+        width: 100%;
+    }
 
-  .btn-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-  }
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
 
-  .btn {
-    padding: 10px 20px;
-    text-align: center;
-    line-height: 1;
-    font-size: 14px;
-    color: #fff;
-    background-color: #306ef5;
-    border-radius: 4px;
-    border: none;
-    margin: 5px;
-  }
+    .btn {
+        padding: 10px 20px;
+        text-align: center;
+        line-height: 1;
+        font-size: 14px;
+        color: #fff;
+        background-color: #306ef5;
+        border-radius: 4px;
+        border: none;
+        margin: 5px;
+    }
 
-  .btn-second {
-    color: #306ef5;
-    background-color: #fff;
-    border: 1px solid #306ef5;
-  }
+    .btn-second {
+        color: #306ef5;
+        background-color: #fff;
+        border: 1px solid #306ef5;
+    }
 
-  button:hover {
-    opacity: 0.8 !important;
-  }
+    button:hover {
+        opacity: 0.8 !important;
+    }
 
-  button:focus {
-    outline: none !important;
-  }
+    button:focus {
+        outline: none !important;
+    }
 
-  .name-container {
-    margin: 50px;
-    display: flex;
-    flex-wrap: wrap;
-  }
+    .name-container {
+        margin: 50px;
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-  .name {
-    padding: 10px 20px;
-    text-align: center;
-    line-height: 1;
-    font-size: 14px;
-    box-shadow: #ccc 0px 0px 5px;
-    border-radius: 3px;
-    color: #656d78;
-    margin: 5px;
-  }
+    .name {
+        padding: 10px 20px;
+        text-align: center;
+        line-height: 1;
+        font-size: 14px;
+        box-shadow: #ccc 0px 0px 5px;
+        border-radius: 3px;
+        color: #656d78;
+        margin: 5px;
+    }
 
-  .name-active {
-    background-color: #ff4d4f;
-    box-shadow: none;
-    color: #fff;
-  }
+    .name-active {
+        background-color: #ff4d4f;
+        box-shadow: none;
+        color: #fff;
+    }
 
-  .mask {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.3s;
-  }
+    .mask {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s;
+    }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  font-size: 10px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  padding: 5px;
-  background-color: #f5f5f5;
-  border-top: 1px solid #ccc;
-}
+    .footer {
+        position: fixed;
+        bottom: 0;
+        font-size: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 5px;
+        background-color: #f5f5f5;
+        border-top: 1px solid #ccc;
+    }
 
-  .dialog {
-    width: 0;
-    height: 0;
-    background-color: #fff;
-    border-radius: 4px;
-    padding: 20px 40px;
-    padding-top: 0;
-    transition: all 0.2s;
-    white-space: nowrap;
-    overflow-x: hidden;
-  }
+    .dialog {
+        width: 0;
+        height: 0;
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 20px 40px;
+        padding-top: 0;
+        transition: all 0.2s;
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
 
-  .mask-show {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transition: all 0.3s;
-  }
+    .mask-show {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transition: all 0.3s;
+    }
 
-  .dialog-show {
-    width: 900px;
-    height: 600px;
-    transition: all 0.2s;
-  }
+    .dialog-show {
+        width: 900px;
+        height: 600px;
+        transition: all 0.2s;
+    }
 
-  .title {
-    font-weight: bold;
-    text-align: center;
-    font-size: 20px;
-    line-height: 70px;
-  }
+    .title {
+        font-weight: bold;
+        text-align: center;
+        font-size: 20px;
+        line-height: 70px;
+    }
 
-  #names {
-    width: 100%;
-    height: 280px;
-    padding: 10px;
-    box-sizing: border-box;
-    resize: none;
-  }
+    #names {
+        width: 100%;
+        height: 280px;
+        padding: 10px;
+        box-sizing: border-box;
+        resize: none;
+    }
 
-  .form-btn-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 50px;
-  }
+    .form-btn-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 50px;
+    }
 
-  .scroll-container {
-    overflow: hidden;
-  }
+    .scroll-container {
+        overflow: hidden;
+    }
 
-  .result-text {
-    margin-bottom: -20px;
-    font-size: 80px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 280px;
-    overflow-x: scroll;
-  }
+    .result-text {
+        margin-bottom: -20px;
+        font-size: 80px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 280px;
+        overflow-x: scroll;
+    }
 
-  a {
-    TEXT-DECORATION:none
-  }
+    a {
+        TEXT-DECORATION: none
+    }
 </style>
 <script>
-  let defaultSongs = JSON.parse(localStorage.getItem('defaultSongs')) // 默认歌单
-  let current // 抽中数据下标
-  let interval // 定时器
-  let period = 100 // 间隔ms
-  let maxTimes = 30 // 随机次数
-  window.onload = function () {
-    init()
-    createNameElement()
-    const resultContainer = document.querySelector('#result-text');
-    resultContainer.addEventListener('wheel', function(event) {
-      event.preventDefault()
-      resultContainer.scrollLeft += event.deltaY
-    });
-  }
-
-  // 初始化默认歌单和自定义歌单
-  function init() {
-    let xhr = new XMLHttpRequest()
-    xhr.open('GET', 'songs.json', false)
-    xhr.send()
-    if (xhr.status === 200) {
-      defaultSongs = JSON.parse(xhr.responseText)
-    } else {
-      defaultSongs = ['获取默认歌单失败']
+    let defaultSongs = JSON.parse(localStorage.getItem('defaultSongs')) // 默认歌单
+    let current // 抽中数据下标
+    let interval // 定时器
+    let period = 100 // 间隔ms
+    let maxTimes = 30 // 随机次数
+    window.onload = function () {
+        init()
+        createNameElement()
+        const resultContainer = document.querySelector('#result-text');
+        resultContainer.addEventListener('wheel', function (event) {
+            event.preventDefault()
+            resultContainer.scrollLeft += event.deltaY
+        });
     }
-    localStorage.setItem('defaultSongs', JSON.stringify(defaultSongs))
-    getInputSongs()
-  }
 
-  // 获取自定义歌单
-  function getInputSongs() {
-    let inputSongs = JSON.parse(localStorage.getItem('inputSongs'))
-    if (!inputSongs) {
-      inputSongs = defaultSongs.map(item => item.title)
-      localStorage.setItem('inputSongs', JSON.stringify(unique(inputSongs)))
-    }
-    return inputSongs
-  }
-
-  // 打开/关闭弹窗
-  function toggleDialog(id, visible) {
-    if (interval) return
-    const mask = document.getElementById(id + '-mask')
-    const dialog = document.getElementById(id + '-dialog')
-    if (visible) {
-      mask.className = 'mask mask-show'
-      dialog.className = 'dialog dialog-show'
-      if (id === 'input') {
-        let names = document.getElementById('names')
-        let inputSongs = getInputSongs()
-        names.value = inputSongs.join('\n')
-      }
-    } else {
-      mask.className = 'mask'
-      dialog.className = 'dialog'
-    }
-  }
-
-  // 录入数据确认
-  function confirm() {
-    let value = document.getElementById('names').value
-    if (!value || !value.trim()) {
-      localStorage.setItem('inputSongs', JSON.stringify(unique(defaultSongs.map(item => item.title))))
-    } else {
-      let inputSongs = value.split('\n')
-      localStorage.setItem('inputSongs', JSON.stringify(unique(inputSongs)))
-    }
-    createNameElement()
-    toggleDialog('input', false)
-  }
-
-  // 重置歌单为默认
-  function resetSongs() {
-    localStorage.removeItem('inputSongs')
-    document.getElementById('names').value = getInputSongs().join('\n')
-    confirm()
-  }
-
-  // 生成名单数据
-  function createNameElement() {
-    const inputSongs = getInputSongs()
-    let countDom = document.getElementById('count')
-    countDom.innerText = inputSongs ? inputSongs.length : 0
-    if (!inputSongs) return
-    let nameDom = document.getElementById('name-container')
-    let len = nameDom.childNodes.length
-    for (let i = 0; i < len; i++) {
-      nameDom.removeChild(nameDom.childNodes[0])
-    }
-    inputSongs.forEach(item => {
-      let node = document.createElement('a')
-      node.className = 'name'
-      const song = defaultSongs.find(s => s.title === item)
-      if (song && song.bvid) {
-        node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
-        node.target = '_blank'
-      }
-      let textNode = document.createTextNode(item)
-      node.appendChild(textNode)
-      nameDom.appendChild(node)
-    })
-  }
-
-  // 开始抽选
-  function start() {
-    if (interval) return
-    const inputSongs = getInputSongs()
-    let len = inputSongs.length
-    let times = 1
-    const parent = document.getElementById('name-container')
-    const resultDom = document.getElementById('result-text')
-    interval = setInterval(function () {
-      if (times++ > maxTimes) {
-        clearInterval(interval)
-        interval = null
-        const name = inputSongs[current]
-        resultDom.innerText = name
-        const songs = defaultSongs.filter(s => s.title === name)
-        const listenDom = document.getElementById('listen-container')
-        const len = listenDom.childNodes.length
-        for (let i = 0; i < len; i++) {
-          listenDom.removeChild(listenDom.childNodes[0])
+    // 初始化默认歌单和自定义歌单
+    function init() {
+        let xhr = new XMLHttpRequest()
+        xhr.open('GET', 'songs.json', false)
+        xhr.send()
+        if (xhr.status === 200) {
+            defaultSongs = JSON.parse(xhr.responseText)
+        } else {
+            defaultSongs = ['获取默认歌单失败']
         }
-        songs.forEach(song => {
-          if (song.bvid) {
+        localStorage.setItem('defaultSongs', JSON.stringify(defaultSongs))
+        getInputSongs()
+    }
+
+    // 获取自定义歌单
+    function getInputSongs() {
+        let inputSongs = JSON.parse(localStorage.getItem('inputSongs'))
+        if (!inputSongs) {
+            inputSongs = defaultSongs.map(item => item.title)
+            localStorage.setItem('inputSongs', JSON.stringify(unique(inputSongs)))
+        }
+        return inputSongs
+    }
+
+    // 打开/关闭弹窗
+    function toggleDialog(id, visible) {
+        if (interval) return
+        const mask = document.getElementById(id + '-mask')
+        const dialog = document.getElementById(id + '-dialog')
+        if (visible) {
+            mask.className = 'mask mask-show'
+            dialog.className = 'dialog dialog-show'
+            if (id === 'input') {
+                let names = document.getElementById('names')
+                let inputSongs = getInputSongs()
+                names.value = inputSongs.join('\n')
+            }
+        } else {
+            mask.className = 'mask'
+            dialog.className = 'dialog'
+        }
+    }
+
+    // 录入数据确认
+    function confirm() {
+        let value = document.getElementById('names').value
+        if (!value || !value.trim()) {
+            localStorage.setItem('inputSongs', JSON.stringify(unique(defaultSongs.map(item => item.title))))
+        } else {
+            let inputSongs = value.split('\n')
+            localStorage.setItem('inputSongs', JSON.stringify(unique(inputSongs)))
+        }
+        createNameElement()
+        toggleDialog('input', false)
+    }
+
+    // 重置歌单为默认
+    function resetSongs() {
+        localStorage.removeItem('inputSongs')
+        document.getElementById('names').value = getInputSongs().join('\n')
+        confirm()
+    }
+
+    // 生成名单数据
+    function createNameElement() {
+        const inputSongs = getInputSongs()
+        let countDom = document.getElementById('count')
+        countDom.innerText = inputSongs ? inputSongs.length : 0
+        if (!inputSongs) return
+        let nameDom = document.getElementById('name-container')
+        let len = nameDom.childNodes.length
+        for (let i = 0; i < len; i++) {
+            nameDom.removeChild(nameDom.childNodes[0])
+        }
+        inputSongs.forEach(item => {
             let node = document.createElement('a')
             node.className = 'name'
-            node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
-            node.target = '_blank'
-            let textNode = document.createTextNode(`${song.bvid}${song.page ? ' P' + song.page : ''}`)
+            const song = defaultSongs.find(s => s.title === item)
+            if (song && song.bvid) {
+                node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
+                node.target = '_blank'
+            }
+            let textNode = document.createTextNode(item)
             node.appendChild(textNode)
-            listenDom.appendChild(node)
-          }
+            nameDom.appendChild(node)
         })
-        toggleDialog('result', true)
-        return
-      }
-      if (parent.children[current]) {
-        parent.children[current].className = 'name'
-      }
-      current = RandomNumBoth(0, len - 1)
-      if (parent.children[current]) {
-        parent.children[current].className = 'name name-active'
-      }
-    }, period)
-  }
+    }
 
-  // 生成随机数
-  function RandomNumBoth(min, max) {
-    return min + Math.round(Math.random() * (max - min))
-  }
+    // 开始抽选
+    function start() {
+        if (interval) return
+        const inputSongs = getInputSongs()
+        let len = inputSongs.length
+        let times = 1
+        const parent = document.getElementById('name-container')
+        const resultDom = document.getElementById('result-text')
+        interval = setInterval(function () {
+            if (times++ > maxTimes) {
+                clearInterval(interval)
+                interval = null
+                const name = inputSongs[current]
+                resultDom.innerText = name
+                const songs = defaultSongs.filter(s => s.title === name)
+                const listenDom = document.getElementById('listen-container')
+                const len = listenDom.childNodes.length
+                for (let i = 0; i < len; i++) {
+                    listenDom.removeChild(listenDom.childNodes[0])
+                }
+                songs.forEach(song => {
+                    if (song.bvid) {
+                        let node = document.createElement('a')
+                        node.className = 'name'
+                        node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
+                        node.target = '_blank'
+                        let textNode = document.createTextNode(`${song.bvid}${song.page ? ' P' + song.page : ''}`)
+                        node.appendChild(textNode)
+                        listenDom.appendChild(node)
+                    }
+                })
+                toggleDialog('result', true)
+                return
+            }
+            if (parent.children[current]) {
+                parent.children[current].className = 'name'
+            }
+            current = RandomNumBoth(0, len - 1)
+            if (parent.children[current]) {
+                parent.children[current].className = 'name name-active'
+            }
+        }, period)
+    }
 
-  // 复制
-  function copy() {
-    const resultDom = document.getElementById('result-text')
-    navigator.clipboard.writeText(resultDom.innerText)
-  }
+    // 生成随机数
+    function RandomNumBoth(min, max) {
+        return min + Math.round(Math.random() * (max - min))
+    }
 
-  // 简单去重
-  function unique(arr) {
-    arr = arr.filter(item => item.trim())
-    return [...new Set(arr)]
-  }
+    // 复制
+    function copy() {
+        const resultDom = document.getElementById('result-text')
+        navigator.clipboard.writeText(resultDom.innerText)
+    }
+
+    // 简单去重
+    function unique(arr) {
+        arr = arr.filter(item => item.trim())
+        return [...new Set(arr)]
+    }
 </script>
 
 <body>
-  <div class="root">
-    <div class="btn-container">
-      <button class="btn" type="button" onclick="start()">祁七七今天唱什么</button>
-      <button class="btn btn-second" type="button" onclick="toggleDialog('input', true)">点我修改歌单</button>
-      <div class="btn btn-second">共计 <span id="count">0</span> 首</div>
+    <div class="root">
+        <div class="btn-container">
+            <button class="btn" type="button" onclick="start()">祁七七今天唱什么</button>
+            <button class="btn btn-second" type="button" onclick="toggleDialog('input', true)">点我修改歌单</button>
+            <div class="btn btn-second">共计 <span id="count">0</span> 首</div>
+        </div>
+        <div class="name-container" id="name-container"></div>
     </div>
-    <div class="name-container" id="name-container"></div>
-  </div>
-  <div class="mask" id="input-mask">
-    <div class="dialog" id="input-dialog">
-      <div class="title"><a href="https://live.bilibili.com/27573773" target="_blank">祁七七</a>今天唱什么</div>
-      <textarea name="names" id="names" cols="5" rows="10" placeholder=""></textarea>
-      <div class="form-btn-container">
-        <button class="btn" type="button" onclick="confirm()">点确定哦</button>
-        <button class="btn" type="button" onclick="resetSongs()">重置歌单</button>
-        <button class="btn btn-second" type="button" onclick="toggleDialog('input', false)">关闭</button>
-      </div>
+    <div class="mask" id="input-mask">
+        <div class="dialog" id="input-dialog">
+            <div class="title"><a href="https://live.bilibili.com/27573773" target="_blank">祁七七</a>今天唱什么</div>
+            <textarea name="names" id="names" cols="5" rows="10" placeholder=""></textarea>
+            <div class="form-btn-container">
+                <button class="btn" type="button" onclick="confirm()">点确定哦</button>
+                <button class="btn" type="button" onclick="resetSongs()">重置歌单</button>
+                <button class="btn btn-second" type="button" onclick="toggleDialog('input', false)">关闭</button>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="mask" id="result-mask">
-    <div class="dialog" id="result-dialog">
-      <div class="title"><a href="https://live.bilibili.com/27573773" target="_blank">祁七七</a>今天唱</div>
-      <div class="scroll-container">
-        <div class="result-text" id="result-text"></div>
-      </div>
-      <div class="form-btn-container">
-        <button class="btn" type="button" onclick="copy()">复制歌名</button>
-        <button class="btn btn-second" type="button" onclick="toggleDialog('result', false)">关闭</button>
-      </div>
-      <div id="listen-container" class="name-container"></div>
+    <div class="mask" id="result-mask">
+        <div class="dialog" id="result-dialog">
+            <div class="title"><a href="https://live.bilibili.com/27573773" target="_blank">祁七七</a>今天唱</div>
+            <div class="scroll-container">
+                <div class="result-text" id="result-text"></div>
+            </div>
+            <div class="form-btn-container">
+                <button class="btn" type="button" onclick="copy()">复制歌名</button>
+                <button class="btn btn-second" type="button" onclick="toggleDialog('result', false)">关闭</button>
+            </div>
+            <div id="listen-container" class="name-container"></div>
+        </div>
     </div>
-  </div>
 </body>
 <footer class="footer">
-  <p>感谢舰长Adam·Eva佬的pull request</p>
+    <p>感谢舰长Adam·Eva佬的pull request</p>
 </footer>
 <a href="https://github.com/cyb233/77ovo" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 </html>
