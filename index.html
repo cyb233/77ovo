@@ -184,7 +184,7 @@
         init()
         createNameElement()
         const resultContainer = document.querySelector('#result-text');
-        resultContainer.addEventListener('wheel', function (event) {
+        resultContainer.addEventListener('wheel', event => {
             event.preventDefault()
             resultContainer.scrollLeft += event.deltaY
         });
@@ -268,16 +268,16 @@
             const item = inputSongs[i]
             let node = document.createElement('a')
             node.className = 'name'
-            const song = defaultSongs.find(s => s.title === item)
             let textNode = document.createTextNode(item)
             node.appendChild(textNode)
             nameDom.appendChild(node)
+            const song = defaultSongs.find(s => s.title === item)
             if (song && song.bvid) {
-                node.onClick = () => {
+                node.addEventListener('click', () => {
                     current = i
                     initResult()
                     toggleDialog('result', true)
-                }
+                })
             }
         }
     }
