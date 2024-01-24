@@ -280,6 +280,13 @@
                 })
             }
         }
+        // 输出个排名到控制台
+        let res = {}
+        inputSongs.forEach(song => {
+            const songs = defaultSongs.filter(s => s.title === song && s.bvid)
+            res[song] = songs.length
+        })
+        console.log(Object.entries(res).sort((a, b) => (b[1] - a[1]) * 2 + (a[0].toUpperCase() > b[0].toUpperCase() ? 1 : -1)))
     }
 
     // 开始抽选
