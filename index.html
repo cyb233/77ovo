@@ -223,7 +223,7 @@
             mask.className = 'mask mask-show'
             dialog.className = 'dialog dialog-show'
             if (id === 'input') {
-                let names = document.getElementById('names')
+                let names = document.querySelector('#names')
                 let inputSongs = getInputSongs()
                 names.value = inputSongs.join('\n')
             }
@@ -235,7 +235,7 @@
 
     // 录入数据确认
     function confirm() {
-        let value = document.getElementById('names').value
+        let value = document.querySelector('#names').value
         if (!value || !value.trim()) {
             localStorage.setItem('inputSongs', JSON.stringify(unique(defaultSongs.map(item => item.title))))
         } else {
@@ -249,24 +249,24 @@
     // 重置歌单为默认
     function resetSongs() {
         localStorage.removeItem('inputSongs')
-        document.getElementById('names').value = getInputSongs().join('\n')
+        document.querySelector('#names').value = getInputSongs().join('\n')
         confirm()
     }
 
     // 生成名单数据
     function createNameElement() {
         const inputSongs = getInputSongs()
-        let countDom = document.getElementById('count')
+        let countDom = document.querySelector('#count')
         countDom.innerText = inputSongs ? inputSongs.length : 0
         if (!inputSongs) return
-        let nameDom = document.getElementById('name-container')
+        let nameDom = document.querySelector('#name-container')
         let len = nameDom.childNodes.length
         for (let i = 0; i < len; i++) {
             nameDom.removeChild(nameDom.childNodes[0])
         }
         for(let i = 0; i < inputSongs.length; i++) {
             const item = inputSongs[i]
-            let node = document.createElement('span')
+            let node = document.createElement('a')
             node.className = 'name'
             const song = defaultSongs.find(s => s.title === item)
             if (song && song.bvid) {
@@ -288,8 +288,7 @@
         const inputSongs = getInputSongs()
         let len = inputSongs.length
         let times = 1
-        const parent = document.getElementById('name-container')
-        const resultDom = document.getElementById('result-text')
+        const parent = document.querySelector('#name-container')
         interval = setInterval(function () {
             if (times++ > maxTimes) {
                 clearInterval(interval)
@@ -311,9 +310,10 @@
     function initResult() {
         const inputSongs = getInputSongs()
         const name = inputSongs[current]
+        const resultDom = document.querySelector('#result-text')
         resultDom.innerText = name
         const songs = defaultSongs.filter(s => s.title === name)
-        const listenDom = document.getElementById('listen-container')
+        const listenDom = document.querySelector('#listen-container')
         const len = listenDom.childNodes.length
         for (let i = 0; i < len; i++) {
             listenDom.removeChild(listenDom.childNodes[0])
@@ -338,7 +338,7 @@
 
     // 复制
     function copy() {
-        const resultDom = document.getElementById('result-text')
+        const resultDom = document.querySelector('#result-text')
         navigator.clipboard.writeText(resultDom.innerText)
     }
 
