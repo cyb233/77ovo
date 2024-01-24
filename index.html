@@ -269,6 +269,9 @@
             let node = document.createElement('a')
             node.className = 'name'
             const song = defaultSongs.find(s => s.title === item)
+            let textNode = document.createTextNode(item)
+            node.appendChild(textNode)
+            nameDom.appendChild(node)
             if (song && song.bvid) {
                 node.onClick = () => {
                     current = i
@@ -276,9 +279,6 @@
                     toggleDialog('result', true)
                 }
             }
-            let textNode = document.createTextNode(item)
-            node.appendChild(textNode)
-            nameDom.appendChild(node)
         }
     }
 
