@@ -264,18 +264,22 @@
         for (let i = 0; i < len; i++) {
             nameDom.removeChild(nameDom.childNodes[0])
         }
-        inputSongs.forEach(item => {
-            let node = document.createElement('a')
+        for(let i = 0; i < inputSongs.length; i++) {
+            const item = inputSongs[i]
+            let node = document.createElement('span')
             node.className = 'name'
             const song = defaultSongs.find(s => s.title === item)
             if (song && song.bvid) {
-                node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
-                node.target = '_blank'
+                node.onClick = () => {
+                    current = i
+                    initResult()
+                    toggleDialog('result', true)
+                }
             }
             let textNode = document.createTextNode(item)
             node.appendChild(textNode)
             nameDom.appendChild(node)
-        })
+        }
     }
 
     // 开始抽选
@@ -290,25 +294,7 @@
             if (times++ > maxTimes) {
                 clearInterval(interval)
                 interval = null
-                const name = inputSongs[current]
-                resultDom.innerText = name
-                const songs = defaultSongs.filter(s => s.title === name)
-                const listenDom = document.getElementById('listen-container')
-                const len = listenDom.childNodes.length
-                for (let i = 0; i < len; i++) {
-                    listenDom.removeChild(listenDom.childNodes[0])
-                }
-                songs.forEach(song => {
-                    if (song.bvid) {
-                        let node = document.createElement('a')
-                        node.className = 'name'
-                        node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
-                        node.target = '_blank'
-                        let textNode = document.createTextNode(`${song.bvid}${song.page ? ' P' + song.page : ''}`)
-                        node.appendChild(textNode)
-                        listenDom.appendChild(node)
-                    }
-                })
+                initResult()
                 toggleDialog('result', true)
                 return
             }
@@ -320,6 +306,28 @@
                 parent.children[current].className = 'name name-active'
             }
         }, period)
+    }
+
+    function initResult() {
+        const name = inputSongs[current]
+        resultDom.innerText = name
+        const songs = defaultSongs.filter(s => s.title === name)
+        const listenDom = document.getElementById('listen-container')
+        const len = listenDom.childNodes.length
+        for (let i = 0; i < len; i++) {
+            listenDom.removeChild(listenDom.childNodes[0])
+        }
+        songs.forEach(song => {
+            if (song.bvid) {
+                let node = document.createElement('a')
+                node.className = 'name'
+                node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
+                node.target = '_blank'
+                let textNode = document.createTextNode(`${song.bvid}${song.page ? ' P' + song.page : ''}`)
+                node.appendChild(textNode)
+                listenDom.appendChild(node)
+            }
+        })
     }
 
     // 生成随机数
