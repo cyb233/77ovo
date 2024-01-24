@@ -309,6 +309,7 @@
     }
 
     function initResult() {
+        const inputSongs = getInputSongs()
         const name = inputSongs[current]
         resultDom.innerText = name
         const songs = defaultSongs.filter(s => s.title === name)
