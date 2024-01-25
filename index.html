@@ -281,7 +281,7 @@
             const item = inputSongs[i]
             let node = document.createElement('span')
             node.className = 'name'
-            node.name = item
+            node.id = item
             let textNode = document.createTextNode(item)
             node.appendChild(textNode)
             nameDom.appendChild(node)
