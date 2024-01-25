@@ -330,8 +330,8 @@
                 parent.children[current].className = 'name name-active'
             }
             selected.innerText = inputSongs[current]
+            selected.href = `#${inputSongs[current]}`
             if (times++ > maxTimes) {
-                selected.href = `#${inputSongs[current]}`
                 clearInterval(interval)
                 interval = null
                 initResult()
