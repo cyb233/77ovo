@@ -72,6 +72,7 @@
         border-radius: 3px;
         color: #656d78;
         margin: 5px;
+        cursor: pointer;
     }
 
     .name-active {
@@ -272,7 +273,7 @@
         }
         for(let i = 0; i < inputSongs.length; i++) {
             const item = inputSongs[i]
-            let node = document.createElement('a')
+            let node = document.createElement('span')
             node.className = 'name'
             let textNode = document.createTextNode(item)
             node.appendChild(textNode)
