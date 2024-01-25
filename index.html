@@ -27,6 +27,8 @@
         display: flex;
         justify-content: center;
         margin-top: 50px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .btn {
@@ -173,13 +175,17 @@
     a {
         TEXT-DECORATION: none
     }
+
+    .no-margin {
+        margin: 0
+    }
 </style>
 <script>
     let defaultSongs = JSON.parse(localStorage.getItem('defaultSongs')) // 默认歌单
     let current // 抽中数据下标
     let interval // 定时器
-    let period = 100 // 间隔ms
-    let maxTimes = 30 // 随机次数
+    let period = 50 // 间隔ms
+    let maxTimes = 60 // 随机次数
     window.onload = function () {
         init()
         createNameElement()
@@ -296,20 +302,22 @@
         let len = inputSongs.length
         let times = 1
         const parent = document.querySelector('#name-container')
+        const selected = document.querySelector('#selected')
         interval = setInterval(function () {
-            if (times++ > maxTimes) {
-                clearInterval(interval)
-                interval = null
-                initResult()
-                toggleDialog('result', true)
-                return
-            }
             if (parent.children[current]) {
                 parent.children[current].className = 'name'
             }
             current = RandomNumBoth(0, len - 1)
             if (parent.children[current]) {
                 parent.children[current].className = 'name name-active'
+            }
+            selected.innerText = inputSongs[current]
+            if (times++ > maxTimes) {
+                clearInterval(interval)
+                interval = null
+                initResult()
+                toggleDialog('result', true)
+                return
             }
         }, period)
     }
@@ -330,7 +338,7 @@
             node.className = 'name'
             node.href = `https://www.bilibili.com/video/${song.bvid}/${song.page ? '?p=' + song.page : ''}`
             node.target = '_blank'
-            let textNode = document.createTextNode(`${song.bvid}${song.page ? ' P' + song.page : ''}`)
+            let textNode = document.createTextNode(`${song.bvid}${song.page ? '#P' + song.page : ''}`)
             node.appendChild(textNode)
             listenDom.appendChild(node)
         })
@@ -361,7 +369,8 @@
         </div>
         <div class="btn-container">
             <button class="btn" type="button" onclick="start()">祁七七今天唱什么</button>
-            <button class="btn btn-second" type="button" onclick="toggleDialog('input', true)">点我修改歌单</button>
+            <span class="btn btn-second" id="selected"></span>
+            <button class="btn btn-second" type="button" onclick="toggleDialog('input', true)">修改歌单</button>
             <div class="btn btn-second">共计 <span id="count">0</span> 首</div>
         </div>
         <div class="name-container" id="name-container"></div>
@@ -387,7 +396,7 @@
                 <button class="btn" type="button" onclick="copy()">复制歌名</button>
                 <button class="btn btn-second" type="button" onclick="toggleDialog('result', false)">关闭</button>
             </div>
-            <div id="listen-container" class="name-container"></div>
+            <div id="listen-container" class="name-container no-margin"></div>
         </div>
     </div>
 </body>
