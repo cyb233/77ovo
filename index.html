@@ -23,12 +23,18 @@
         width: 100%;
     }
 
-    .btn-container, .center {
+    .center {
         display: flex;
         justify-content: center;
         margin-top: 50px;
-        flex-direction: column;
-        align-items: center;
+    }
+
+    .btn-container {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: auto auto;
+        grid-gap: 10px 10px;
+        margin-top: 50px;
     }
 
     .btn {
@@ -275,6 +281,7 @@
             const item = inputSongs[i]
             let node = document.createElement('span')
             node.className = 'name'
+            node.name = item
             let textNode = document.createTextNode(item)
             node.appendChild(textNode)
             nameDom.appendChild(node)
@@ -314,6 +321,7 @@
             }
             selected.innerText = inputSongs[current]
             if (times++ > maxTimes) {
+                selected.href = `#${inputSongs[current]}`
                 clearInterval(interval)
                 interval = null
                 initResult()
@@ -370,7 +378,7 @@
         </div>
         <div class="btn-container">
             <button class="btn" type="button" onclick="start()">祁七七今天唱什么</button>
-            <span class="btn btn-second" id="selected"></span>
+            <a class="btn btn-second" id="selected">今天唱...</a>
             <button class="btn btn-second" type="button" onclick="toggleDialog('input', true)">修改歌单</button>
             <div class="btn btn-second">共计 <span id="count">0</span> 首</div>
         </div>
