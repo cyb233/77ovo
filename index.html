@@ -295,14 +295,11 @@
             let textNode = document.createTextNode(item)
             node.appendChild(textNode)
             nameDom.appendChild(node)
-            const song = defaultSongs.find(s => s.title === item)
-            if (song && song.bvid) {
-                node.addEventListener('click', () => {
-                    current = i
-                    initResult()
-                    toggleDialog('result', true)
-                })
-            }
+            node.addEventListener('click', () => {
+                current = i
+                initResult()
+                toggleDialog('result', true)
+            })
         }
         // 输出个排名到控制台
         let res = {}
