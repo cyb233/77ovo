@@ -209,7 +209,7 @@
         createNameElement()
         const search = document.querySelector('#search')
         search.addEventListener('input', event => {
-            createNameElement(event.srcElement.value)
+            createNameElement()
         })
         const resultContainer = document.querySelector('#result-text')
         resultContainer.addEventListener('wheel', event => {
@@ -239,7 +239,9 @@
             inputSongs = defaultSongs.map(item => item.title)
             localStorage.setItem('inputSongs', JSON.stringify(unique(inputSongs)))
         }
-        return inputSongs
+        const filterVal = document.querySelector('#search').value
+        if (!filterVal) document.querySelector('#search').value = ''
+        return inputSongs.filter(name => name.indexOf(filterVal || '') > -1)
     }
 
     // 打开/关闭弹窗
@@ -282,9 +284,8 @@
     }
 
     // 生成名单数据
-    function createNameElement(filterVal) {
-        if (!filterVal) document.querySelector('#search').value = ''
-        const inputSongs = getInputSongs().filter(name => name.indexOf(filterVal || '') > -1)
+    function createNameElement() {
+        const inputSongs = getInputSongs()
         let countDom = document.querySelector('#count')
         countDom.innerText = inputSongs ? inputSongs.length : 0
         if (!inputSongs) return
