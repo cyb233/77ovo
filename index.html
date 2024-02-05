@@ -32,7 +32,7 @@
         display: grid;
         justify-content: center;
         grid-template-columns: auto auto;
-        grid-gap: 10px 10px;
+        grid-gap: 10px;
         margin-top: 30px;
     }
 
@@ -207,11 +207,15 @@
     window.onload = function () {
         init()
         createNameElement()
-        const resultContainer = document.querySelector('#result-text');
+        const search = document.querySelector('#search')
+        search.addEventListener('input', event => {
+            createNameElement(event.srcElement.value)
+        })
+        const resultContainer = document.querySelector('#result-text')
         resultContainer.addEventListener('wheel', event => {
             event.preventDefault()
             resultContainer.scrollLeft += event.deltaY
-        });
+        })
     }
 
     // 初始化默认歌单和自定义歌单
@@ -222,7 +226,7 @@
         if (xhr.status === 200) {
             defaultSongs = JSON.parse(xhr.responseText)
         } else {
-            defaultSongs = ['获取默认歌单失败']
+            defaultSongs = ['获取默认歌单失败，请重试']
         }
         localStorage.setItem('defaultSongs', JSON.stringify(defaultSongs))
         getInputSongs()
@@ -278,8 +282,9 @@
     }
 
     // 生成名单数据
-    function createNameElement() {
-        const inputSongs = getInputSongs()
+    function createNameElement(filterVal) {
+        if (!filterVal) document.querySelector('#search').value = ''
+        const inputSongs = getInputSongs().filter(name => name.indexOf(filterVal || '') > -1)
         let countDom = document.querySelector('#count')
         countDom.innerText = inputSongs ? inputSongs.length : 0
         if (!inputSongs) return
@@ -310,8 +315,8 @@
         })
         console.log(Object.entries(res).sort((a, b) => (b[1] - a[1]) * 2 + (a[0].toUpperCase() > b[0].toUpperCase() ? 1 : -1)))
         // 看看有没有似乎一样的歌曲
-        const similarSongs = findAllSimilarSongs(getInputSongs().sort());
-        console.log("似乎相似的歌曲:\n", similarSongs);
+        const similarSongs = findAllSimilarSongs(getInputSongs().sort())
+        console.log("似乎相似的歌曲:\n", similarSongs)
     }
 
     // 开始抽选
@@ -383,20 +388,20 @@
 
     // 简单找出相似歌曲
     function findAllSimilarSongs(sortedArray) {
-        const similarSongs = [];
+        const similarSongs = []
         for (let i = 0; i < sortedArray.length - 1; i++) {
-            const currentSong = sortedArray[i];
-            const nextSong = sortedArray[i + 1];
+            const currentSong = sortedArray[i]
+            const nextSong = sortedArray[i + 1]
             if (isSimilar(currentSong, nextSong)) {
-                similarSongs.push(currentSong, nextSong);
+                similarSongs.push(currentSong, nextSong)
             }
         }
-        return similarSongs;
+        return similarSongs
     }
 
     // 检查两个字符串是否相似
     function isSimilar(str1, str2) {
-        const lengthDiff = Math.abs(str1.length - str2.length);
+        const lengthDiff = Math.abs(str1.length - str2.length)
         // 长度差异不超过1，并且字符差异在合理范围内
         return (
             lengthDiff <= 1 &&
@@ -406,32 +411,32 @@
 
     // 计算两个字符串之间不同字符的数量
     function calculateCharacterDifference(str1, str2) {
-        let differences = 0;
-        let i = 0;
-        let j = 0;
+        let differences = 0
+        let i = 0
+        let j = 0
 
         while (i < str1.length && j < str2.length) {
             if (str1[i] !== str2[j]) {
-                differences++;
+                differences++
                 // 考虑字符插入或删除的情况
                 if (str1.length < str2.length) {
-                    j++;
+                    j++
                 } else if (str1.length > str2.length) {
-                    i++;
+                    i++
                 } else {
-                    i++;
-                    j++;
+                    i++
+                    j++
                 }
             } else {
-                i++;
-                j++;
+                i++
+                j++
             }
         }
 
         // 处理剩余的字符
-        differences += Math.abs(str1.length - i) + Math.abs(str2.length - j);
+        differences += Math.abs(str1.length - i) + Math.abs(str2.length - j)
 
-        return differences;
+        return differences
     }
 </script>
 
@@ -447,6 +452,9 @@
             <a class="btn btn-second" id="selected">今天唱...</a>
             <button class="btn btn-second" type="button" onclick="toggleDialog('input', true)">修改歌单</button>
             <div class="btn btn-second">共计 <span id="count">0</span> 首</div>
+        </div>
+        <div class="center">
+            <input id="search" type="search" placeholder="搜一下？" class="btn btn-second search"/>
         </div>
         <div class="name-container" id="name-container"></div>
     </div>
