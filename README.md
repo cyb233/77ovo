@@ -5,7 +5,7 @@ https://shuvi.moe/77ovo/
 |-----|-----|-----|
 |[七七的翻唱~(合集)](https://space.bilibili.com/3493137920035605/channel/collectiondetail?sid=1535671&ctype=0)|2024-06-17|35|
 |[七七的翻唱~(独立投稿)](https://space.bilibili.com/3493137920035605/video)|2024-05-05|2|
-|[祁七七的直播翻唱合集](https://space.bilibili.com/47275989/channel/seriesdetail?sid=3580738)|2024-04-04|1574|
+|[祁七七的直播翻唱合集](https://space.bilibili.com/47275989/channel/seriesdetail?sid=3580738)|2024-07-13|1791|
 |[祁七七的动态歌单](https://t.bilibili.com/814493547863474280)|2024-01-19|183|
 ## 相关脚本
 ### 合集
